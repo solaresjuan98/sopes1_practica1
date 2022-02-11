@@ -146,12 +146,23 @@ export const useCalculator = () => {
 
 
         setPreviousNumber("0")
+
+        if (operation.operator === '/' && (operation.n2 === 0)) {
+            Swal.fire(
+                "Error",
+                "Could not operate",
+                'error'
+            )
+        } else {
+            Swal.fire(
+                'Operation Saved',
+                'The operation has been saved',
+                'success'
+            )
+        }
+
         // Reset operation to its defaults
-        Swal.fire(
-            'Operation Saved',
-            'The operation has been saved',
-            'success'
-          )
+
         //resetOperation();
     }
 

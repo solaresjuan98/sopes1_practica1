@@ -16,18 +16,18 @@ export const Results = () => {
           </tr>
         </thead>
         <tr>
-          <td scope="col">2</td>
-          <td scope="col">1</td>
-          <td scope="col">+</td>
-          <td scope="col">3</td>
-          <td scope="col">10/2/2022</td>
+          <td>2</td>
+          <td>1</td>
+          <td>+</td>
+          <td>3</td>
+          <td>10/2/2022</td>
         </tr>
         <tr>
-          <td scope="col">2</td>
-          <td scope="col">3</td>
-          <td scope="col">+</td>
-          <td scope="col">5</td>
-          <td scope="col">10/2/2022</td>
+          <td>2</td>
+          <td>3</td>
+          <td>+</td>
+          <td>5</td>
+          <td>10/2/2022</td>
         </tr>
       </table>
 
