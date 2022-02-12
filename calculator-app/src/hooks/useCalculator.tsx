@@ -1,4 +1,5 @@
-import React, { useRef, useState } from 'react'
+import axios from 'axios';
+import React, { useEffect, useRef, useState } from 'react'
 import Swal from 'sweetalert2'
 
 enum Operators {
@@ -9,7 +10,10 @@ interface Operation {
     n1: number;
     n2: number;
     operator: "+" | "-" | "*" | "/";
+    result?: number;
+    time?: string;
 }
+
 
 export const useCalculator = () => {
 
@@ -18,9 +22,28 @@ export const useCalculator = () => {
     const [operation, setOperation] = useState<Operation>({
         n1: 0,
         n2: 0,
-        operator: "+"
+        operator: "+",
+        //result: 0
     });
     const lastOperator = useRef<Operators>();
+
+    // Results
+    const [results, setResults] = useState<Operation[]>([])
+
+
+    const getResults = async () => {
+
+        await axios.get("http://localhost:5000/operations")
+            .then(res => {
+                
+                //console.log(res.data.data)
+                console.log(res)
+                setResults(res.data.data.data)
+            })
+
+        
+
+    }
 
     const buildNumber = (numStr: string) => {
 
@@ -62,9 +85,11 @@ export const useCalculator = () => {
 
     const resetOperation = () => {
         setOperation({
+            ...operation,
             n1: 0,
             n2: 0,
-            operator: '+'
+            operator: '+',
+            //result: 0
         })
     }
 
@@ -143,8 +168,6 @@ export const useCalculator = () => {
             n2
         })
 
-
-
         setPreviousNumber("0")
 
         if (operation.operator === '/' && (operation.n2 === 0)) {
@@ -154,6 +177,7 @@ export const useCalculator = () => {
                 'error'
             )
         } else {
+
             Swal.fire(
                 'Operation Saved',
                 'The operation has been saved',
@@ -166,6 +190,12 @@ export const useCalculator = () => {
         //resetOperation();
     }
 
+    useEffect(() => {
+      
+        getResults();
+    }, [])
+    
+
     return {
         number,
         operation,
@@ -177,6 +207,9 @@ export const useCalculator = () => {
         btnMul,
         btnDiv,
         submitResult,
-        negativeNumber
+        negativeNumber,
+        // database
+        results 
+
     }
 }
