@@ -1,23 +1,35 @@
 import React from 'react'
 import { useCalculator } from '../hooks/useCalculator'
+import moment from 'moment'
+
 
 export const Results = () => {
 
-  const { results } = useCalculator();
+  const { results, getResults } = useCalculator();
 
 
-
-  // console.log(results)
-
-  // // for(let i = 0; i < results.length; i++) {
-  // //   console.log(results[i])
-  // // }
+  /**
+   * write an action to refresh db data
+   * when the button is pressed
+   * 
+   */
 
   return (
-    <div className='mt-5'>
+    <div className='mt-5' style={{
+      height: '80vh',
+      width: '500px',
+      overflow: 'scroll',
+      overflowX: 'hidden',
+      margin: '20'
+    }}>
       <h1>Results</h1>
 
-      <table className='table table-hover'>
+      <button className='btn btn-info' onClick={() => getResults()}>
+        Refresh data
+      </button>
+      
+      
+      <table className='table table-hover mt-2'>
         <thead>
           <tr className="table-dark">
             <th scope='col'>Number 1</th>
@@ -27,36 +39,24 @@ export const Results = () => {
             <th scope='col'>Date</th>
           </tr>
         </thead>
-        {
+        <tbody>
+          {
+            results.map(({ id, n1, n2, operator, result, time }) => (
+              <tr key={id}>
+                <td>{n1}</td>
+                <td>{n2}</td>
+                <td>{operator}</td>
+                <td>{result}</td>
+                <td>{moment(time).format('MMMM Do YYYY, h:mm:ss a')}</td>
+              </tr>
+            ))
+          }
+        </tbody>
 
 
-          results.map((result) => (
-            <tr>
-              <td>{result.n1}</td>
-              <td>{result.n2}</td>
-              <td>{result.operator}</td>
-              <td>{result.result}</td>
-              <td>{result.time}</td>
-            </tr>
-          ))
-
-
-        }
-        {/* <tr>
-          <td>2</td>
-          <td>1</td>
-          <td>+</td>
-          <td>3</td>
-          <td>10/2/2022</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>3</td>
-          <td>+</td>
-          <td>5</td>
-          <td>10/2/2022</td>
-        </tr> */}
       </table>
+
+
 
     </div>
   )

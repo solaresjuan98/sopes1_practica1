@@ -8,9 +8,9 @@ import (
 
 type CalcResult struct {
 	Id_result primitive.ObjectID `json:"id,omitempty"`
-	Number1   int                `json:"n1" validate:"required"`
-	Number2   int                `json:"n2" validate:"required"`
+	Number1   float64            `json:"n1" validate:"required"`
+	Number2   float64            `json:"n2" validate:"required"`
 	Operator  string             `json:"operator" validate:"required"`
-	Result    int                `json:"result"`
+	Result    float64            `json:"result"`
 	TimeAt    time.Time          `json:"time"`
 }

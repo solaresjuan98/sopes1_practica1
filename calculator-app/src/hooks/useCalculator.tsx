@@ -7,6 +7,7 @@ enum Operators {
 }
 
 interface Operation {
+    id?: string;
     n1: number;
     n2: number;
     operator: "+" | "-" | "*" | "/";
@@ -35,14 +36,23 @@ export const useCalculator = () => {
 
         await axios.get("http://localhost:5000/operations")
             .then(res => {
-                
+
                 //console.log(res.data.data)
-                console.log(res)
+                //console.log(res)
+                //console.log(re)
                 setResults(res.data.data.data)
             })
 
-        
 
+
+    }
+
+    const sendOperation = async (operation: Operation) => {
+        console.log(operation)
+        await axios.post("http://localhost:5000/insertResult", operation)
+            .then(res => {
+                console.log(res.data)
+            })
     }
 
     const buildNumber = (numStr: string) => {
@@ -156,8 +166,8 @@ export const useCalculator = () => {
 
 
     // Method to send to backend
-    const submitResult = () => {
-
+    const submitResult = async () => {
+       
         const n1 = Number(previousNumber);
         const n2 = Number(number);
 
@@ -178,11 +188,15 @@ export const useCalculator = () => {
             )
         } else {
 
+            // Todo: post request
+
             Swal.fire(
                 'Operation Saved',
                 'The operation has been saved',
                 'success'
             )
+
+            await sendOperation(operation);
         }
 
         // Reset operation to its defaults
@@ -191,10 +205,11 @@ export const useCalculator = () => {
     }
 
     useEffect(() => {
-      
+
         getResults();
+        
     }, [])
-    
+
 
     return {
         number,
@@ -209,7 +224,8 @@ export const useCalculator = () => {
         submitResult,
         negativeNumber,
         // database
-        results 
+        results,
+        getResults
 
     }
 }
