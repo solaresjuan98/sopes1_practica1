@@ -13,4 +13,5 @@ func UserRoute(app *fiber.App) {
 	app.Get("/operation/:resultId", controllers.GetResult)
 
 	app.Get("/operations", controllers.GetAllOperatons)
+
 }
