@@ -47,10 +47,17 @@ export const useCalculator = () => {
 
     }
 
-    const sendOperation = async (operation: Operation) => {
-        console.log(operation)
+    const sendOperation = async () => {
+        //console.log(operation)
+        console.log('Xd')
         await axios.post("http://localhost:5000/insertResult", operation)
             .then(res => {
+
+                Swal.fire(
+                    'Operation Saved',
+                    'The operation has been saved',
+                    'success'
+                )
                 console.log(res.data)
             })
     }
@@ -138,6 +145,7 @@ export const useCalculator = () => {
 
     const btnMul = () => {
         changeVal();
+        lastOperator.current = Operators.mul;
         setOperation({
             ...operation,
             operator: '*'
@@ -146,6 +154,7 @@ export const useCalculator = () => {
 
     const btnDiv = () => {
         changeVal();
+        lastOperator.current = Operators.div;
         setOperation({
             ...operation,
             operator: '/'
@@ -167,7 +176,7 @@ export const useCalculator = () => {
 
     // Method to send to backend
     const submitResult = async () => {
-       
+
         const n1 = Number(previousNumber);
         const n2 = Number(number);
 
@@ -180,25 +189,34 @@ export const useCalculator = () => {
 
         setPreviousNumber("0")
 
-        if (operation.operator === '/' && (operation.n2 === 0)) {
-            Swal.fire(
-                "Error",
-                "Could not operate",
-                'error'
-            )
-        } else {
+        switch (lastOperator.current) {
 
-            // Todo: post request
+            case Operators.sum:
 
-            Swal.fire(
-                'Operation Saved',
-                'The operation has been saved',
-                'success'
-            )
+                setNumber(`${n1 + n2}`);
+                break;
 
-            await sendOperation(operation);
+            case Operators.sub:
+                setNumber(`${n1 - n2}`);
+                break;
+
+            case Operators.mul:
+                setNumber(`${n1 * n2}`);
+                break;
+
+            case Operators.div:
+                if (n2 !== 0) {
+                    setNumber(`${n1 / n2}`);
+                } else {
+                    setNumber("Error")
+                }
+
+                break;
         }
 
+
+
+        //await sendOperation(operation);
         // Reset operation to its defaults
 
         //resetOperation();
@@ -207,7 +225,7 @@ export const useCalculator = () => {
     useEffect(() => {
 
         getResults();
-        
+
     }, [])
 
 
@@ -225,7 +243,8 @@ export const useCalculator = () => {
         negativeNumber,
         // database
         results,
-        getResults
+        getResults,
+        sendOperation
 
     }
 }

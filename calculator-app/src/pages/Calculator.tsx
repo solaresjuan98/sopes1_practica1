@@ -15,7 +15,8 @@ export const Calculator = () => {
         btnDiv,
         submitResult,
         negativeNumber,
-        operation
+        operation,
+        sendOperation
     } = useCalculator();
 
     return (
@@ -68,11 +69,26 @@ export const Calculator = () => {
                         <CalculatorButton label='.' btnClass='btn btn-secondary' action={buildNumber} />
                         <CalculatorButton label='=' btnClass='btn btn-warning' action={submitResult} />
                     </div>
+
+                    <div className="row mt-3 d-grid gap-2 mx-auto ">
+
+                        <button
+                            className='btn btn-info'
+                            type='submit'
+                            style={{ borderRadius: '10px' }}
+                            onClick={sendOperation}
+                        >
+                            Save result
+                        </button>
+
+                    </div>
                 </div>
 
 
+
+
             </div>
-            <div>
+            <div className='mt-5'>
                 {JSON.stringify(operation, null, 4)}
             </div>
         </>

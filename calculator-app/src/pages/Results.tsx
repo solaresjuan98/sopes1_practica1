@@ -24,11 +24,16 @@ export const Results = () => {
     }}>
       <h1>Results</h1>
 
-      <button className='btn btn-info' onClick={() => getResults()}>
+      <button 
+        className='btn btn-info' 
+        style={{
+          borderRadius: '10px'
+        }}
+        onClick={() => getResults()}>
         Refresh data
       </button>
-      
-      
+
+
       <table className='table table-hover mt-2'>
         <thead>
           <tr className="table-dark">
@@ -41,15 +46,19 @@ export const Results = () => {
         </thead>
         <tbody>
           {
-            results.map(({ id, n1, n2, operator, result, time }) => (
-              <tr key={id}>
-                <td>{n1}</td>
-                <td>{n2}</td>
-                <td>{operator}</td>
-                <td>{result}</td>
-                <td>{moment(time).format('MMMM Do YYYY, h:mm:ss a')}</td>
-              </tr>
-            ))
+            results !== null && (
+
+              results.map(({ id, n1, n2, operator, result, time }) => (
+                <tr key={id}>
+                  <td>{n1}</td>
+                  <td>{n2}</td>
+                  <td>{operator}</td>
+                  <td>{result}</td>
+                  <td>{moment(time).format('MMMM Do YYYY, h:mm:ss a')}</td>
+                </tr>
+              ))
+
+            )
           }
         </tbody>
 
