@@ -14,14 +14,12 @@ services:
     restart: always
 
     volumes:
-     # - /Users/snowman/ejemplo-docker/app/etc:/etc/mongo
-      - /Users/snowman/practica1/mongodata:/data/db
+     - /Users/snowman/ejemplo-docker/app/etc:/etc/mongo
 
     networks:
       - practica1-sopes
 
   backend:
-    # image: dockehubuser/dockerimage
     build: ./mongo-backend
     container_name: backend_p1_201800496
 
@@ -40,11 +38,11 @@ services:
        - "3000:3000"
      restart: always
      depends_on:
-      - backend
+       - backend
      networks:
-      - practica1-sopes
+       - practica1-sopes
 
 networks:
-  practica1-sopes:
-    #name: "practica1-sopes"
+	practica1-sopes:
+    name: "practica1-sopes"
     driver: bridge
