@@ -10,25 +10,6 @@ Desarrollado por: Juan Antonio Solares
 <br>
 Carné: 201800496
 
-## Descripción de la practica:
-
-<p>
-La practica consiste en una calculadora sencilla desarrollada en React con TypeScript, en la cual se realizan las cuatro operaciones aritmeticas básicas (suma, resta, multiplicación, división), que son registradas en una base de datos de <b>mongodb</b> para tener un log de cada operacion realizada (operandos, operador, resultado y fecha de operación).
-
-Se utilizaron volumenes en docker para poder desplegar la arquitectura y exista persistencia de datos, es decir que al momento de parar los contenedores y volverlos a encender no exista perdida de datos.
-</p>
-
-:green_book:[Manual Usuario](#tag2)
-
-# Vista de la aplicación
-
-![1](./images/front.png)
-
-## Funcionalidades básicas
-* <b>Calculadora:</b> Realiza operaciones aritmeticas (suma, resta, multiplicación, división)
-* <b> Guardar Resultado: </b> Almacenar la operacion en la base de datos
-* <b> Tabla de resultados: </b> Se muestra el detalle de todas las operaciones realizadas
-* <b> Actualizar resultados: Al presionar el boton se refrescan los registros almacenados en la base de datos.  </b>
 
 # :green_book:[Manual Técnico](#tag1)
 
