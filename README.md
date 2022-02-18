@@ -80,8 +80,11 @@ npm start
 
 <p>
 Es importante tomar en cuenta que es importante tener instalado Go, en esta aplicación
-la versión utilizada es la 1.16.7. <a tag="anexos">d</a>
+la versión utilizada es la 1.16.7. 
 </p>
+
+### Link sugerido
+&nbsp;&nbsp;&nbsp;:link:[Instalación de Go en ubuntu](https://dev.to/hackmamba/build-a-rest-api-with-golang-and-mongodb-fiber-version-4la0)
 
 ```sh
 # crear una carpeta que contendrá el backend 
@@ -183,7 +186,7 @@ sudo docker push dockerhubuser/<nombre_imagen>
 
 # ANEXOS<a name="anexos">
 
-&nbsp;&nbsp;&nbsp;:link:[Instalación de Go en ubuntu](https://dev.to/hackmamba/build-a-rest-api-with-golang-and-mongodb-fiber-version-4la0)
+
 
 &nbsp;&nbsp;&nbsp;:link:[Backend con golang y mongodb con fiber](https://dev.to/hackmamba/build-a-rest-api-with-golang-and-mongodb-fiber-version-4la0)
 
