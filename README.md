@@ -1,5 +1,9 @@
 # PRACTICA #1 SISTEMAS OPERATIVOS
 
+![1](./images/banner.png)
+
+![1](./images/banner2.png)
+
 ## Universidad de San Carlos de Guatemala
 ## Datos del estudiante:
 Desarrollado por: Juan Antonio Solares
@@ -21,11 +25,12 @@ Se utilizaron volumenes en docker para poder desplegar la arquitectura y exista 
 ![1](./images/front.png)
 
 ## Funcionalidades básicas
-* Calculadora: Realiza operaciones aritmeticas (suma, resta, multiplicación, división)
-* Guardar Resultado: Almacenar la operacion en la base de datos
-* Tabla de resultados: Se muestra el detalle de todas las operaciones realizadas
+* <b>Calculadora:</b> Realiza operaciones aritmeticas (suma, resta, multiplicación, división)
+* <b> Guardar Resultado: </b> Almacenar la operacion en la base de datos
+* <b> Tabla de resultados: </b> Se muestra el detalle de todas las operaciones realizadas
+* <b> Actualizar resultados: Al presionar el boton se refrescan los registros almacenados en la base de datos.  </b>
 
-## :green_book:[Manual Técnico](#tag1)
+# :green_book:[Manual Técnico](#tag1)
 
 
 <!-- ## Indice -->
@@ -34,18 +39,19 @@ Se utilizaron volumenes en docker para poder desplegar la arquitectura y exista 
 
     * Node.js
     * npm
-    * React
+    * [React](#react)
     * TypeScript
 
 * :large_blue_circle:[Backend](#req-previos)
 
-    * Golang
+    * [Golang](#golang)
     * Fiber v2
-    * Mongodb
+    * [Mongodb](#mongodb)
 
 * :large_blue_circle:[Docker](#req-previos)
 
-  
+    * [Configuración Docker](#docker)
+
 
 
 :white_check_mark:[Arquitectura utilizada](#req-previos)
@@ -60,7 +66,7 @@ La siguiente imagen muestra una representación gráfica de la arquitectura real
 mkdir sopes1_practica1
 ```
 
-<h3>Configración de aplicación React </h3>
+### Configración de aplicación React  <a name="docker"></a>
 
 ```sh
 # acceder al directorio
@@ -76,7 +82,7 @@ cd calculator-app
 npm start
 
 ```
-<h3>Configración de aplicación en golang </h3>
+### Configración de aplicación en golang  <a name="golang"></a>
 
 <p>
 Es importante tomar en cuenta que es importante tener instalado Go, en esta aplicación
@@ -112,13 +118,21 @@ go run main.go
 
 Es importante asegurar que la aplicación funcione tanto de la parte del backend y frontend para poder realizar las configuraciones de docker correspondientes.
 
+# Mongodb <a name="mongo"></a>
+
+## ¿Qué es mongodb?
+En lugar de guardar los datos en tablas, tal y como se hace en las bases de datos relacionales, MongoDB guarda estructuras de datos BSON (una especificación similar a JSON) con un esquema dinámico, haciendo que la integración de los datos en ciertas aplicaciones sea más fácil y rápida.
+
 # Docker
 
-## ¿Qué es docker?
+## ¿Qué es docker? <a name="docker"></a>
+<p>
+Docker es una plataforma de software que le permite crear, probar e implementar aplicaciones rápidamente. Docker empaqueta software en unidades estandarizadas llamadas contenedores que incluyen todo lo necesario para que el software se ejecute, incluidas bibliotecas, herramientas de sistema, código y tiempo de ejecución. Con Docker, puede implementar y ajustar la escala de aplicaciones rápidamente en cualquier entorno con la certeza de saber que su código se ejecutará.
+</p>
 
-
-### Conceptos importantes de docker
-
+<p>
+Docker proporciona una manera estándar de ejecutar código. Docker es un sistema operativo para contenedores. De manera similar a cómo una máquina virtual virtualiza (elimina la necesidad de administrar directamente) el hardware del servidor, los contenedores virtualizan el sistema operativo de un servidor. Docker se instala en cada servidor y proporciona comandos sencillos que puede utilizar para crear, iniciar o detener contenedores.
+</p>
 
 
 ### Configuraciones Docker
@@ -170,12 +184,11 @@ docker tag 595f7a7ab0d1 solaresjuan98/getting-started:v2
 ## En caso de estar en entorno local, verificara si existe una sesión iniciada
 docker login
 
-
-## 
+## subir contenedor a dockerhub
 sudo docker push dockerhubuser/<nombre_imagen>
 ```
 
-## Enlaces de las imagenes en dockerhub
+## Enlaces de las imagenes en Dockerhub
 
 ### Frontend
 :link:https://hub.docker.com/repository/docker/solaresjuan98/backend_p1_201800496
@@ -186,7 +199,7 @@ sudo docker push dockerhubuser/<nombre_imagen>
 
 # ANEXOS<a name="anexos">
 
-
+&nbsp;&nbsp;&nbsp;:link:[Contenedores de docker](https://aws.amazon.com/es/docker/)
 
 &nbsp;&nbsp;&nbsp;:link:[Backend con golang y mongodb con fiber](https://dev.to/hackmamba/build-a-rest-api-with-golang-and-mongodb-fiber-version-4la0)
 
