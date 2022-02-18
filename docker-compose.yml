@@ -21,8 +21,8 @@ services:
       - practica1-sopes
 
   backend:
-    # image: dockehubuser/dockerimage
-    build: ./mongo-backend
+    image: solaresjuan98/backend_p1_201800496
+    #build: ./mongo-backend
     container_name: backend_p1_201800496
 
     ports: 
@@ -34,7 +34,7 @@ services:
       - practica1-sopes
 
   frontend:
-     build: ./calculator-app
+     image: solaresjuan98/frontend_p1_201800496
      container_name: frontend_p1_201800496
      ports:
        - "3000:3000"
