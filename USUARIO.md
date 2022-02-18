@@ -1,6 +1,9 @@
 
 # MANUAL USUARIO
 
+![1](./images/banner.png)
+
+![1](./images/banner2.png)
 
 ## Descripción de la practica:
 
@@ -16,7 +19,7 @@ Se utilizaron volumenes en docker para poder desplegar la arquitectura y exista 
 |:-:|---|
 | Sistema operativo  |   Windows 10/11, Linux, MAC OS |
 | Lenguaje de programación (frontend): | Javascript / TypeScript  |
-| Lenguajo de programación (backend) |  Golang 1.16.17 |
+| Lenguajo de programación (backend): |  Golang 1.16.17 |
 | Base de datos |  Mongodb |
 
 
