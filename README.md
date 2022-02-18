@@ -25,7 +25,7 @@ Se utilizaron volumenes en docker para poder desplegar la arquitectura y exista 
 * Guardar Resultado: Almacenar la operacion en la base de datos
 * Tabla de resultados: Se muestra el detalle de todas las operaciones realizadas
 
-:green_book:[Manual Técnico](#tag1)
+## :green_book:[Manual Técnico](#tag1)
 
 
 <!-- ## Indice -->
@@ -78,6 +78,11 @@ npm start
 ```
 <h3>Configración de aplicación en golang </h3>
 
+<p>
+Es importante tomar en cuenta que es importante tener instalado Go, en esta aplicación
+la versión utilizada es la 1.16.7. <a tag="anexos">d</a>
+</p>
+
 ```sh
 # crear una carpeta que contendrá el backend 
 mkdir mongo-backend
@@ -104,6 +109,15 @@ go run main.go
 
 Es importante asegurar que la aplicación funcione tanto de la parte del backend y frontend para poder realizar las configuraciones de docker correspondientes.
 
+# Docker
+
+## ¿Qué es docker?
+
+
+### Conceptos importantes de docker
+
+
+
 ### Configuraciones Docker
 
 #### Instalacion de docker
@@ -111,6 +125,67 @@ Es importante asegurar que la aplicación funcione tanto de la parte del backend
 ```sh
 sudo apt install docker.io
 ```
+
+### Generar contenderoes
+
+```sh
+# acceder al directorio 
+cd app_folder
+
+docker build -t <container_name> .
+
+# correr contenedor en modo iteractivo (muestra logs en consola)
+docker run -it -p 4000:3000 <container_name>
+
+# correr contenedor en modo detach  (corre en segundo plano)
+docker run -d -p 4000:3000 <container_name>
+
+# parar contenedor
+docker stop <id_container>
+
+```
+
+### Volumenes
+
+```sh
+# create a docker volume
+docker run -d -v /Users/snowman/ejemplo-docker/app/etc:/etc/todos -p 3000:3000 getting-started
+
+# update docker volume?
+docker run -d -v /Users/snowman/ejemplo-docker/app/etc:/etc/todos -p 3000:3000 -v /Users/snowman/ejemplo-docker/app/src:/app/src  getting-started
+
+# docker tag
+docker tag 595f7a7ab0d1 solaresjuan98/getting-started:v2
+```
+
+### Subir contenedor a Dockerhub
+
+**Es importante tener un usuario creado en dockerhub
+
+```sh
+## Iniciar sesión en dockerhub (ingresar usuario y contraseña)
+## En caso de estar en entorno local, verificara si existe una sesión iniciada
+docker login
+
+
+## 
+sudo docker push dockerhubuser/<nombre_imagen>
+```
+
+## Enlaces de las imagenes en dockerhub
+
+### Frontend
+:link:https://hub.docker.com/repository/docker/solaresjuan98/backend_p1_201800496
+
+### Backend
+:link:https://hub.docker.com/repository/docker/solaresjuan98/frontend_p1_201800496
+
+
+# ANEXOS<a name="anexos">
+
+&nbsp;&nbsp;&nbsp;:link:[Instalación de Go en ubuntu](https://dev.to/hackmamba/build-a-rest-api-with-golang-and-mongodb-fiber-version-4la0)
+
+&nbsp;&nbsp;&nbsp;:link:[Backend con golang y mongodb con fiber](https://dev.to/hackmamba/build-a-rest-api-with-golang-and-mongodb-fiber-version-4la0)
 
 
 <!-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 3 -->
