@@ -146,14 +146,13 @@ docker stop <id_container>
 ### Volumenes
 
 ```sh
-# create a docker volume
-docker run -d -v /Users/snowman/ejemplo-docker/app/etc:/etc/todos -p 3000:3000 getting-started
 
-# update docker volume?
-docker run -d -v /Users/snowman/ejemplo-docker/app/etc:/etc/todos -p 3000:3000 -v /Users/snowman/ejemplo-docker/app/src:/app/src  getting-started
+# crear volumen de docker
+docker run -d -v /Users/snowman/frontend/app/etc:/etc/frontend_p1_201800496 -p 3000:3000 frontend_p1_201800496_v2
 
 # docker tag
-docker tag 595f7a7ab0d1 solaresjuan98/getting-started:v2
+docker tag 01551c602282 solaresjuan98/frontend_p1_201800496_v2
+
 ```
 
 ### Subir contenedor a Dockerhub
@@ -165,8 +164,8 @@ docker tag 595f7a7ab0d1 solaresjuan98/getting-started:v2
 ## En caso de estar en entorno local, verificara si existe una sesión iniciada
 docker login
 
-## subir contenedor a dockerhub
-sudo docker push dockerhubuser/<nombre_imagen>
+## Subir imagen a docker
+sudo docker push solaresjuan98/frontend_p1_201800496_v2
 ```
 
 ## Enlaces de las imagenes en Dockerhub

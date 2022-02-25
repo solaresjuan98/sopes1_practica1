@@ -34,13 +34,16 @@ export const useCalculator = () => {
 
     const getResults = async () => {
 
-        await axios.get("http://localhost:5000/operations")
+        // Change IP host if is necessary
+        await axios.get("http://20.115.32.183:5000/operations")
             .then(res => {
 
                 //console.log(res.data.data)
                 //console.log(res)
                 //console.log(re)
                 setResults(res.data.data.data)
+            }).catch((error) => {
+                console.error(error);
             })
 
 
@@ -48,10 +51,10 @@ export const useCalculator = () => {
     }
 
     const sendOperation = async () => {
-        //console.log(operation)
-        console.log('Xd')
-        await axios.post("http://localhost:5000/insertResult", operation)
-            .then(res => {
+
+        // Change IP host if is necessary
+        await axios.post("http://20.115.32.183:5000/insertResult", operation)
+            .then((res) => {
 
                 Swal.fire(
                     'Operation Saved',
@@ -59,6 +62,8 @@ export const useCalculator = () => {
                     'success'
                 )
                 console.log(res.data)
+            }).catch((error) => {
+                console.error(error);
             })
     }
 
